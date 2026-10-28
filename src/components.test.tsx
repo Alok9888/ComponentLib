@@ -2,10 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Accordion, Button, DataTable, DatePicker, Dropdown, Form, FormField, Input, Modal, Tabs, Toast } from './components';
 import App from './app';
 
-describe('Atelier UI components', () => {
+describe('ComponentLib components', () => {
   it('renders and disables a button', () => { render(<Button disabled>Save</Button>); expect(screen.getByRole('button', { name: 'Save' })).toBeDisabled(); });
   it('labels input and exposes validation error', () => { render(<Input label="Email" error="Required" />); expect(screen.getByLabelText('Email')).toHaveAttribute('aria-invalid', 'true'); expect(screen.getByText('Required')).toBeInTheDocument(); });
-  it('opens and closes a modal', () => { const close = vi.fn(); render(<Modal open onClose={close} title="Confirm">Proceed?</Modal>); expect(screen.getByRole('dialog', { name: 'Confirm' })).toBeInTheDocument(); fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' }); expect(close).toHaveBeenCalledOnce(); });
+  it('opens and closes a modal', () => { const close = vi.fn(); render(<Modal open onClose={close} title="Confirm">Proceed?</Modal>); expect(screen.getByRole('dialog', { name: 'Confirm' })).toBeInTheDocument(); fireEvent.keyDown(screen.getByRole('dialog'), { key: 'Escape' }); expect(close).toHaveBeenCalledTimes(1); });
   it('updates dropdown value', () => { const change = vi.fn(); render(<Dropdown label="Plan" options={[{ label: 'Studio', value: 'studio' }]} onChange={change} />); fireEvent.change(screen.getByLabelText('Plan'), { target: { value: 'studio' } }); expect(change).toHaveBeenCalledWith('studio'); });
   it('switches tabs', () => { render(<Tabs items={[{ label: 'First', value: 'one', content: 'First panel' }, { label: 'Second', value: 'two', content: 'Second panel' }]} />); fireEvent.click(screen.getByRole('tab', { name: 'Second' })); expect(screen.getByText('Second panel')).toBeInTheDocument(); });
   it('announces toast content', () => { render(<Toast message="Saved" />); expect(screen.getByRole('status')).toHaveTextContent('Saved'); });

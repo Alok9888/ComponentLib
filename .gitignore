@@ -3,6 +3,7 @@ dist
 demo-dist
 storybook-static
 coverage
+.jest-cache
 .env*
 .DS_Store
 *.tsbuildinfo

@@ -71,19 +71,19 @@ export default function App() {
   const code = selected === 'Button' ? '<Button variant="primary" size="md">Save changes</Button>' : item.usage;
   return <div className="playground" data-theme={dark ? 'dark' : 'light'}>
     <aside className="play-sidebar">
-      <button className="play-brand" onClick={() => setSelected('Button')}><span className="play-mark">a</span><span>atelier<span className="play-brand-dot">.</span><small>COMPONENT LIBRARY</small></span></button>
+      <button className="play-brand" onClick={() => setSelected('Button')}><span className="play-mark">C</span><span>ComponentLib<small>REACT COMPONENT LIBRARY</small></span></button>
       <div className="play-nav-heading">COMPONENTS <span>10</span></div>
       {entries.map(entry => <button key={entry.name} aria-label={'Open ' + entry.name + ' component playground'} className={'play-nav-item' + (selected === entry.name ? ' selected' : '')} aria-current={selected === entry.name ? 'page' : undefined} onClick={() => { setSelected(entry.name); setSubmitted(''); }}><span className="play-nav-glyph">{entry.name === 'Button' ? '◉' : entry.name === 'DataTable' ? '▤' : entry.name === 'Modal' ? '▢' : '◇'}</span>{entry.name}<span className="play-nav-group">{entry.group}</span></button>)}
       <div className="play-sidebar-bottom"><span className="play-status-dot" />10 components · React + TypeScript</div>
     </aside>
     <main className="play-main">
-      <header className="play-topbar"><div><span>ATELIER UI</span><span className="play-slash">/</span><span>Components</span><span className="play-slash">/</span><strong>{selected}</strong></div><button className="play-theme" aria-pressed={dark} onClick={() => setDark(!dark)}>{dark ? '☼' : '◐'}<span>{dark ? 'Light mode' : 'Dark mode'}</span></button></header>
+      <header className="play-topbar"><div><span>COMPONENTLIB</span><span className="play-slash">/</span><span>Components</span><span className="play-slash">/</span><strong>{selected}</strong></div><button className="play-theme" aria-pressed={dark} onClick={() => setDark(!dark)}>{dark ? '☼' : '◐'}<span>{dark ? 'Light mode' : 'Dark mode'}</span></button></header>
       <div className="play-content">
         <div className="play-intro"><div><div className="play-kicker">{item.group.toUpperCase()} · COMPONENT</div><h1>{item.name}</h1><p>{item.description}</p></div><span className="play-version">v0.1.0</span></div>
         <section className="play-preview-card"><div className="play-card-head"><div><strong>Interactive preview</strong><span>Change the controls and try the component.</span></div><span className="play-live"><i />LIVE</span></div><div className="play-preview">{renderPreview()}</div></section>
-        <section className="play-code-card"><div className="play-card-head"><div><strong>Usage</strong><span>Import the component and compose it in your app.</span></div><span className="play-code-label">TSX</span></div><pre><code>{'import { ' + selected + ' } from "@your-scope/atelier-ui";\n\n' + code}</code></pre></section>
+        <section className="play-code-card"><div className="play-card-head"><div><strong>Usage</strong><span>Import the component and compose it in your app.</span></div><span className="play-code-label">TSX</span></div><pre><code>{'import { ' + selected + ' } from "@your-scope/componentlib";\n\n' + code}</code></pre></section>
         <section className="play-details"><article className="play-detail-card"><div className="play-detail-title">API highlights</div><ul>{item.props.map(prop => <li key={prop}><code>{prop.split(':')[0]}</code><span>{prop.includes(':') ? prop.slice(prop.indexOf(':') + 2) : 'Supported'}</span></li>)}</ul></article><article className="play-detail-card"><div className="play-detail-title">Built for reuse</div><p>Typed props, composable React APIs, theme tokens, and focused interaction tests make this component easy to adopt and extend.</p><div className="play-tags"><span>TypeScript</span><span>Accessible</span><span>Tested</span></div></article></section>
-        <footer className="play-footer">Atelier UI <span>·</span> A small, reusable component system</footer>
+        <footer className="play-footer">ComponentLib <span>·</span> A small, reusable component system</footer>
       </div>
     </main>
     {toast && <div className="play-toast"><Toast message={toast} onDismiss={() => setToast('')} /></div>}

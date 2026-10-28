@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Accordion, Button, DataTable, DatePicker, Dropdown, Form, FormField, Input, Modal, Tabs, Toast } from '../src/components';
-const meta: Meta = { title: 'Atelier UI/Components', parameters: { layout: 'padded' } };
+const meta: Meta = { title: 'ComponentLib/Components', parameters: { layout: 'padded' } };
 export default meta;
 type Story = StoryObj;
 export const ButtonStory: Story = { name: 'Button', render: () => <div style={{ display: 'flex', gap: 12 }}><Button>Primary action</Button><Button variant="secondary">Secondary</Button><Button variant="ghost">Ghost</Button><Button variant="danger">Delete</Button></div> };
 export const InputStory: Story = { name: 'Input', render: () => <div style={{ width: 320 }}><Input label="Email address" type="email" placeholder="you@example.com" hint="We’ll never share your email." /><Input label="With validation" value="not-an-email" readOnly error="Enter a valid email address" /></div> };
-export const ModalStory: Story = { name: 'Modal', render: () => { const Demo = () => { const [open, setOpen] = React.useState(true); return <><Button onClick={() => setOpen(true)}>Open dialog</Button><Modal open={open} onClose={() => setOpen(false)} title="Welcome to Atelier">A calm, considered component library.</Modal></>; }; return <Demo />; } };
+export const ModalStory: Story = { name: 'Modal', render: () => { const Demo = () => { const [open, setOpen] = React.useState(true); return <><Button onClick={() => setOpen(true)}>Open dialog</Button><Modal open={open} onClose={() => setOpen(false)} title="Welcome to ComponentLib">A reusable, accessible component library.</Modal></>; }; return <Demo />; } };
 export const DropdownStory: Story = { name: 'Dropdown', render: () => <Dropdown label="Plan" options={[{ label: 'Starter', value: 'starter' }, { label: 'Studio', value: 'studio' }]} onChange={() => {}} /> };
 export const TabsStory: Story = { name: 'Tabs', render: () => <Tabs items={[{ label: 'Overview', value: 'overview', content: 'Your workspace at a glance.' }, { label: 'Activity', value: 'activity', content: 'Recent activity appears here.' }]} /> };
 export const ToastStory: Story = { name: 'Toast', render: () => <div style={{ display: 'grid', gap: 12 }}><Toast message="Changes saved successfully" /><Toast tone="info" message="A new version is available" /><Toast tone="error" message="Unable to save changes" /></div> };

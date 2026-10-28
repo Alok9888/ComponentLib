@@ -1,6 +1,6 @@
-# Atelier UI
+# ComponentLib
 
-**A reusable React component library with an interactive component playground.** Atelier focuses on typed, composable components, accessibility, responsive theming, and focused interaction tests. The demo lets you select each component, adjust its controls, inspect a usage example, and review API highlights.
+**A reusable React component library with an interactive component playground.** ComponentLib focuses on typed, composable components, accessibility, responsive theming, and focused interaction tests. The playground lets you select each component, adjust its controls, inspect a usage example, and review API highlights.
 
 ## Run the demo
 
@@ -27,8 +27,8 @@ npm run dev
 ## Use the library
 
 ```tsx
-import { Button, Input, DataTable } from '@your-scope/atelier-ui';
-import '@your-scope/atelier-ui/styles.css';
+import { Button, Input, DataTable } from '@your-scope/componentlib';
+import '@your-scope/componentlib/styles.css';
 
 <Input label="Email" type="email" required />
 <Button onClick={() => console.log('Saved')}>Save changes</Button>
@@ -45,12 +45,13 @@ The components use CSS custom properties declared in `src/styles/index.scss`. Se
 ```bash
 npm run storybook       # component examples and controls
 npm test -- --coverage  # component interaction tests
+npm run test:jest       # Jest + React Testing Library suite
 npm run lint
 npm run build           # demo app
 npm run build:lib       # distributable library
 ```
 
-The test suite contains focused behavior tests across the public components and component navigation. Current component source coverage is reported by Vitest; CI runs lint, coverage-enabled tests, app build, and package build on pushes and pull requests. Run `npm test -- --coverage` locally to see the current report.
+Vitest and Jest both run React Testing Library behavior tests for the public components; CI runs both suites alongside linting and app/package builds. Run `npm test -- --coverage` or `npm run test:jest` to execute each suite.
 
 ## Performance
 
@@ -62,7 +63,7 @@ Native controls provide built-in keyboard and screen-reader support. Tabs suppor
 
 ## Publish
 
-1. Change `@your-scope/atelier-ui` to a package name you own.
+1. Change `@your-scope/componentlib` to a package name you own.
 2. Set the version and run `npm run build:lib`.
 3. Authenticate with npm, then run `npm publish --access public`.
 
